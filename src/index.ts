@@ -20,15 +20,9 @@ const schema = createSchema({
   }
 });
 
-app.on(['GET', 'POST'], '/graphql', async (c) => {
-  const yoga = createYoga({
-    graphiql: c.env.NODE_ENV === 'development' ? {
-      title: 'My GraphiQL',
-      defaultQuery: `query { hello }`,
-    } : undefined,
-    schema
-  });
 
+app.on(['GET', 'POST'], '/graphql', async (c) => {
+  const yoga = createYoga({ schema });
   return await yoga.fetch(c.req.raw, c.env, c.executionCtx);
 });
 
