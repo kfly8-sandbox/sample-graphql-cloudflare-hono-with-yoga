@@ -1,6 +1,15 @@
 import SchemaBuilder from '@pothos/core';
+import { GQLContext } from './context';
 
-export const builder = new SchemaBuilder({});
+type GQLSchema = {
+  Context: GQLContext;
+  // Create a Builder that makes input fields and arguments required by default
+  DefaultInputFieldRequiredness: true;
+};
+
+export const builder = new SchemaBuilder<GQLSchema>({
+  defaultInputFieldRequiredness: true,
+});
 
 // We create empty root query, mutation, and subscription
 // because we'll define individual nodes in other files
