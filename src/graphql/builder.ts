@@ -3,11 +3,13 @@ import { GQLContext } from './context';
 
 type GQLSchema = {
   Context: GQLContext;
+  DefaultFieldNullability: false;
   // Create a Builder that makes input fields and arguments required by default
   DefaultInputFieldRequiredness: true;
 };
 
 export const builder = new SchemaBuilder<GQLSchema>({
+  defaultFieldNullability: false,
   defaultInputFieldRequiredness: true,
 });
 
