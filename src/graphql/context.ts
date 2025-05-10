@@ -1,5 +1,7 @@
+import type { Context } from 'hono';
+
 export interface GQLContext {
-  something: string;
+  hono: Context;
   //db: ...
   //loader: ...
 }

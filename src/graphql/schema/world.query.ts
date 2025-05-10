@@ -14,7 +14,8 @@ builder.queryType({
         }),
       },
       resolve: (_, {name}, c) => {
-        return `Hello ${name}! from ${c.something}`
+        const ua = c.hono.req.header('user-agent')
+        return `Hello ${name}! from ${ua}`
       }
     }),
   }),

@@ -13,7 +13,9 @@ const app = new Hono<{Bindings: Bindings}>()
 app.on(['GET', 'POST'], '/graphql', async (c: Context) => {
   const yoga = createYoga({
     context(): GQLContext {
-      return { something: c.req.header('User-Agent') || 'unknown' }
+      return {
+        hono: c
+      }
     },
     schema
   });
